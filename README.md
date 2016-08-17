@@ -459,11 +459,12 @@ Provide a synchronous function to coerce or transform the value(s) given on the
 command line for `key`.
 
 The coercion function should accept one argument, representing the parsed value
-from the command line, and should return a new value or throw an error. The
-returned value will be used as the value for `key` (or one of its aliases) in
-`argv`. If the function throws, the error will be treated as a validation
-failure, delegating to either a custom [`.fail()`](#fail) handler or printing
-the error message in the console.
+from the command line, and should return a new value or throw an error.
+The coercion function will be executed once for each value, or if no values are found,
+once for the default value, if default is set. The returned value will be used
+as the value for `key` (or one of its aliases) in `argv`. If the function throws,
+the error will be treated as a validation failure, delegating to either
+a custom [`.fail()`](#fail) handler or printing the error message in the console.
 
 ```js
 var argv = require('yargs')
